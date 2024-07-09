@@ -16,7 +16,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/catalog/user")
+    @GetMapping("/user")
     public String userInfo(Model model, Principal principal) {
         String login = principal.getName();
         User user = userService.findByLogin(login);
