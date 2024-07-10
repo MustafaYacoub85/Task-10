@@ -23,7 +23,7 @@ public class AdminController {
         return "catalog/list";
     }
 
-    @GetMapping("catalog/list/creat") // возврашаем страницу с формой нового товара
+    @GetMapping("catalog/list/creat")
     public String getNewUser() {
         return "catalog/new_list";
     }

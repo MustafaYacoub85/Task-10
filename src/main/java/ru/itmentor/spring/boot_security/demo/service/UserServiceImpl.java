@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itmentor.spring.boot_security.demo.dao.RoleDao;
 import ru.itmentor.spring.boot_security.demo.dao.UserDao;
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
+    private final PasswordEncoder getPasswordEncoder;
 
 
     @Override
@@ -39,6 +41,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User creatUser(int age, String email, String firstName, String lastName, String password, String login) {
         return this.userDao.save(new User(age, email, firstName, lastName, password, login));
+    }
+
+    @Override
+    public void saveUser(User user) {
+        userDao.save(user);
+        user.setPassword(getPasswordEncoder.encode(user.getPassword()));
     }
 
 

@@ -9,7 +9,7 @@
 
 <h1>Update User</h1>
 
-<form th:object="${user}" method="post" th:action="@{/templates/catalog/list/update/{userId}(userId=${user.id})}">
+<form th:object="${user}" method="post" th:action="@{/catalog/list/update/{userId}(userId=${user.id})}">
     <input type="hidden" th:field="*{id}" />
     <label>Name: <input type="text" name="firstName" th:field="*{firstName}"/></label><br/>
     <label>Surname: <input type="text" name="lastName" th:field="*{lastName}"/></label><br/>

@@ -16,7 +16,7 @@ public interface UserService {
     Optional<User> findUser(Integer userId);
 
     User creatUser(int age, String email, String firstName, String lastName, String password, String login);
-
+    void saveUser(User user);
     Optional<Role> findRole(Integer roleId);
 
     Iterable<Role> getAllRole();
