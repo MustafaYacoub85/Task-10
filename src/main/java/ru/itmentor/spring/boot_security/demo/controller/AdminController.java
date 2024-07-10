@@ -28,7 +28,7 @@ public class AdminController {
         return "catalog/new_list";
     }
 
-    @PostMapping("catalog/list/creat") // обработка формы возврата товара
+    @PostMapping("catalog/list/creat") //
     public String creatUser(NewUserPayload payload) {
         User user = this.userService.creatUser(payload.age(), payload.email(), payload.firstName(), payload.lastName(), payload.password(), payload.login());
         return "redirect:/catalog/list";
