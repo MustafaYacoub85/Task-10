@@ -5,17 +5,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 import ru.itmentor.spring.boot_security.demo.dao.RoleDao;
 import ru.itmentor.spring.boot_security.demo.dao.UserDao;
 import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.model.User;
 
-import java.security.Principal;
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +31,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
 
-
-
     @Override
     public Optional<User> findUser(Integer userId) {
         return this.userDao.findById(userId);
@@ -54,17 +47,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return this.roleDao.findById(roleId);
     }
 
-//    @Override
-//    public void updateUser(Integer id, int age, String firstName, String lastName, String email) {
-//        this.userDao.findById(id).ifPresentOrElse(user -> {
-//            user.setAge(age);
-//            user.setFirstName(firstName);
-//            user.setLastName(lastName);
-//            user.setEmail(email);
-//        }, () -> {
-//            throw new NoSuchElementException();
-//        });
-//    }
 
     @Override
     public void deleteUser(Integer id) {
@@ -97,7 +79,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User '%s' not found", login));
         }
-         return  user;
+        return user;
     }
 }
 
