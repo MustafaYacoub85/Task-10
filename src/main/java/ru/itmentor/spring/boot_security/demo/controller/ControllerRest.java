@@ -13,10 +13,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping()
-public class AdminControllerRest {
+public class ControllerRest {
     public final UserService userService;
 
-    public AdminControllerRest(UserService userService) {
+    public ControllerRest(UserService userService) {
         this.userService = userService;
     }
 
