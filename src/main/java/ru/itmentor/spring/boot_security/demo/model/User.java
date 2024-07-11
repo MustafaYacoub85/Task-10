@@ -95,3 +95,4 @@ public class User implements UserDetails {
         this.login = login;
     }
 }
+

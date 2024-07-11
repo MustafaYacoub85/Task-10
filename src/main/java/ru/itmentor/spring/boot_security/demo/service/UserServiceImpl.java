@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserDao userDao;
     private final RoleDao roleDao;
     private final PasswordEncoder getPasswordEncoder;
+    private final UserDetailsServiceImpl userDetailsServiceImpl;
 
 
     @Override
@@ -70,6 +71,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             updatingUser.setFirstName(user.getFirstName());
             updatingUser.setLastName(user.getLastName());
             updatingUser.setEmail(user.getEmail());
+            updatingUser.setLogin(user.getLogin());
+            updatingUser.setPassword(user.getPassword());
             return userDao.save(updatingUser);
         } else {
             throw new NullPointerException("User is null");
@@ -79,6 +82,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public User findByLogin(String login) {
         return userDao.findByLogin(login);
     }
+
+
 
 
     @Override
